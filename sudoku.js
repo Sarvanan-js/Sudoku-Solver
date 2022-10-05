@@ -1,6 +1,7 @@
 var numSelected = null;
 var tileSelected = null;
 var errors = 0;
+var level = 1;
 var userChoice = 0;
 var board = [
     [0,0,0,0,0,0,0,0,0],
@@ -65,6 +66,9 @@ function setGame()
             document.getElementById("board").appendChild(tile);
         }
     }
+
+    let leveBtn = document.getElementById("easy-btn");
+    leveBtn.classList.add("level-button-selected");
 }
 
 function selectNumber()
@@ -206,7 +210,10 @@ function solve(board)
                         if(solve(board) == true)
                             return true;
                         else
+                        {
                             board[i][j] = 0;
+                        }
+
                     }
                 }
 
@@ -276,60 +283,63 @@ function user_input()
 
 function easy()
 {
-    userChoice = 0;
-    let level = 1;
-    const options = {
-    	method: 'GET',
-        url : 'rapidapi.com',
-    	headers: {
-    		'X-RapidAPI-Host': 'sudoku-board.p.rapidapi.com',
-    		'X-RapidAPI-Key': '63da27458dmsh06bbea38526b821p1c236fjsne0da6bf5b472'
-    	}
-    };
+    if(level == 2)
+    {
+        let leveBtn = document.getElementById("medium-btn");
+        leveBtn.classList.remove("level-button-selected");
+    }
 
-    fetch('https://sudoku-board.p.rapidapi.com/new-board?diff='+level+'&stype=list&solu=true', options)
-    	.then(tdata => tdata.json())
-    	.then(tdata => 
-            {
-            let t = Object.values(tdata);
-            let t1 = Object.values(t[0]);
-            let t2 = Object.values(t1[2]);
-            console.log(t1[2]);
-            render(t2,level);
-         })
-    	.catch(err => console.error(err));
+    else if(level == 3)
+    {
+        let leveBtn = document.getElementById("hard-btn");
+        leveBtn.classList.remove("level-button-selected");
+    }
+    userChoice = 0;
+    level = 1;
+    let leveBtn = document.getElementById("easy-btn");
+    leveBtn.classList.add("level-button-selected");
 }
 
 function medium()
 {
-    userChoice = 0;
-    let level = 2;
-    const options = {
-    	method: 'GET',
-        url : 'rapidapi.com',
-    	headers: {
-    		'X-RapidAPI-Host': 'sudoku-board.p.rapidapi.com',
-    		'X-RapidAPI-Key': '63da27458dmsh06bbea38526b821p1c236fjsne0da6bf5b472'
-    	}
-    };
+    if(level == 1)
+    {
+        let leveBtn = document.getElementById("easy-btn");
+        leveBtn.classList.remove("level-button-selected");
+    }
 
-    fetch('https://sudoku-board.p.rapidapi.com/new-board?diff='+level+'&stype=list&solu=true', options)
-    	.then(tdata => tdata.json())
-    	.then(tdata => 
-            {
-            let t = Object.values(tdata);
-            let t1 = Object.values(t[0]);
-            let t2 = Object.values(t1[2]);
-            console.log(t1[2]);
-            render(t2,level);
-         })
-    	.catch(err => console.error(err));
+    else if(level == 3)
+    {
+        let leveBtn = document.getElementById("hard-btn");
+        leveBtn.classList.remove("level-button-selected");
+    }
+    userChoice = 0;
+    level = 2;
+    let leveBtn = document.getElementById("medium-btn");
+    leveBtn.classList.add("level-button-selected");
 }
 
 function hard()
 {
+    if(level == 1)
+    {
+        let leveBtn = document.getElementById("easy-btn");
+        leveBtn.classList.remove("level-button-selected");
+    }
+
+    else if(level == 2)
+    {
+        let leveBtn = document.getElementById("medium-btn");
+        leveBtn.classList.remove("level-button-selected");
+    }
     userChoice = 0;
-    let level = 3;
+    level = 3;
+    let leveBtn = document.getElementById("hard-btn");
+    leveBtn.classList.add("level-button-selected");
+}
+
+function newGame()
+{
     const options = {
     	method: 'GET',
         url : 'rapidapi.com',
