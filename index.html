@@ -4,28 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUDOKU SOLVER</title>
-    <link rel="stylesheet" href="sudoku.css">
-    <script src="sudoku.js"></script>
-
+    <title>Document</title>
+    <script src = "api.js"></script>
 </head>
 <body>
-    <h1>Sudoku</h1>
-    <hr>
-    <h2 id = "errors">0</h2>
-
-    <!-- 9X9 board -->
-    <div id = "board"></div>
+    <button onclick="easy()">easy</button>
     <br>
-
-    <div id = "digits"></div>
     <br>
-    <button type="submit" id="easy-btn" onclick="easy()">EASY</button>
-    <button type="submit" id="medium-btn" onclick="medium()">MEDIUM</button>
-    <button type="submit" id="hard-btn" onclick="hard()">HARD</button>
-    <!-- <button type="submit" id="new-game-btn" onclick="newGame()">NEW GAME</button> -->
-    <button type="submit" id = "solve-btn" onclick="solve1()">SOLVE</button>
-    <button type="submit" id = "user_input-btn" onclick="user_input()">USER INPUT</button>
+    <button onclick="medium()">medium</button>
+    <br>
+    <br>
+    <button onclick="hard()">hard</button>
     <p id = "para"></p>
 </body>
 </html>
