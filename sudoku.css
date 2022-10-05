@@ -94,3 +94,8 @@ hr{
 {
     color: green;
 }
+
+.level-button-selected
+{
+    background-color: grey;
+}
